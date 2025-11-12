@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif; /* Fuente general para el cuerpo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /*background: linear-gradient(135deg, #fce38a, #f38181);  Fondo degradado */
+    background: url('images/galaxia1.0.jpg') no-repeat center center fixed; /* Carga la imagen */
+    background-size: cover;
+    color: #f0f0f0;
+    overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.card {
+    background: rgba(195, 227, 255, 0.9); /* Fondo blanco semi-transparente */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeIn 1.5s ease-out; /* Animación de entrada */
+}
+
+.title {
+    font-family: 'Pacifico', cursive; /* Fuente especial para el título */
+    font-size: 3.5em; /* Tamaño grande */
+    color: #0091eb; /* Color rosa vibrante */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra en el texto */
+    animation: bounceIn 2s ease-out; /* Animación de rebote */
+}
+
+.message {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.gift-box {
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite ease-in-out; /* Animación de pulsación */
+}
+
+.signature {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #777;
+    margin-top: 30px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    .title {
+        font-size: 2.5em;
+    }
+    .message {
+        font-size: 1em;
+    }
+    .gift-box {
+        font-size: 2.5em;
+    }
+}
+/* Estilos para el botón de regalo */
+.gift-button {
+    text-decoration: none; /* Quita el subrayado del enlace */
+    color: inherit; /* Hereda el color del texto */
+    cursor: pointer; /* Muestra un cursor de mano */
+    display: inline-block; /* Permite aplicar padding y margin como bloque */
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gift-button:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el ratón */
+}
+
+/* Para asegurarnos de que la tarjeta de cumpleaños no se muestre en galeria.html si no queremos */
+/* Esto se maneja mejor en galeria.html con un estilo específico para body o un contenedor distinto */
+/* Pero si quisieras una regla global (menos flexible): */
+/* body.gallery-page .card { display: none; } */
+/* y luego añadir <body class="gallery-page"> en galeria.html */
+/* O simplemente como lo hicimos en galeria.html con .card { display: none; } dentro de la etiqueta <style> */
+
+
+/* Adaptaciones para el título en la galería si usa el mismo estilo del body */
+.gallery-card .gallery-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8em; /* Un poco más pequeño que el principal */
+    color: #0091eb; /* Un color que contraste con el fondo de la galería */
+    margin-bottom: 30px;
+}
+
+/* Asegurarse de que el color del texto de la galería sea legible en el fondo de galaxia */
+.gallery-card p, .gallery-card .back-button {
+    color: #333; /* Color oscuro para que se lea en el fondo blanco de la tarjeta */
+}
+.gallery-card .back-button {
+    background-color: #0091eb;
+    color: white;
+}
+.gallery-card .back-button:hover {
+    background-color: #0091eb;
+}
+
+/* Media Queries para la galería */
+@media (max-width: 850px) {
+    .gallery-card {
+        padding: 20px;
+        margin: 20px 15px;
+    }
+    .gallery-title {
+        font-size: 2em;
+    }
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    .image-grid img {
+        height: 120px;
+    }
+    .back-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
