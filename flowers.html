@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0a1128 0%, #1a2344 50%, #0d1b3a 100%);
+            position: relative;
+            height: 100vh;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: nebula-float 8s infinite ease-in-out;
+        }
+
+        @keyframes nebula-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.1); }
+        }
+
+        .nebula1 {
+            top: 10%;
+            left: 30%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(100, 150, 255, 0.6), transparent);
+        }
+
+        .nebula2 {
+            top: 5%;
+            right: 20%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(150, 100, 255, 0.5), transparent);
+            animation-delay: 2s;
+        }
+
+        .nebula3 {
+            bottom: 30%;
+            right: 10%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255, 100, 200, 0.4), transparent);
+            animation-delay: 4s;
+        }
+
+        .garden {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            height: 70%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .grass-blade {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to top, #1a4d2e, #4ade80);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            animation: sway 3s infinite ease-in-out;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        .flower {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: grow 2s ease-out;
+        }
+
+        @keyframes grow {
+            from { transform: translateY(100px) scale(0); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .stem {
+            width: 4px;
+            background: linear-gradient(to bottom, #2d5f3f, #1a4d2e);
+            border-radius: 2px;
+            position: relative;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+        }
+
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background: linear-gradient(to right, #2d5f3f, #4ade80);
+            border-radius: 0 50% 50% 0;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+        }
+
+        .leaf-left {
+            left: -30px;
+            transform: rotate(-30deg);
+        }
+
+        .leaf-right {
+            right: -26px;
+            transform: rotate(30deg) scaleX(-1);
+        }
+
+        .bloom {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            animation: bloom-rotate 20s linear infinite;
+        }
+
+        @keyframes bloom-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .petal {
+            position: absolute;
+            width: 35px;
+            height: 50px;
+            background: linear-gradient(to top, rgba(100, 255, 218, 0.8), rgba(180, 255, 240, 0.95));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 50%;
+            left: 50%;
+            transform-origin: center bottom;
+            box-shadow: 
+                0 0 20px rgba(100, 255, 218, 0.8),
+                0 0 40px rgba(100, 255, 218, 0.5),
+                inset 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: petal-glow 3s infinite ease-in-out;
+        }
+
+        @keyframes petal-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 20px rgba(100, 255, 218, 0.8),
+                    0 0 40px rgba(100, 255, 218, 0.5),
+                    inset 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 30px rgba(100, 255, 218, 1),
+                    0 0 60px rgba(100, 255, 218, 0.7),
+                    inset 0 0 15px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        .center {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #fff9e6, #ffd700);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.9),
+                0 0 30px rgba(255, 215, 0, 0.6);
+            animation: center-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes center-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .bud-cluster {
+            position: absolute;
+            display: flex;
+            gap: 8px;
+        }
+
+        .bud {
+            width: 15px;
+            height: 20px;
+            background: linear-gradient(to top, rgba(70, 200, 180, 0.7), rgba(120, 220, 200, 0.9));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.6);
+            animation: bud-bob 2s infinite ease-in-out;
+        }
+
+        @keyframes bud-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .message-container {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+            animation: fade-in 2s ease-out;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translate(-50%, -30px); }
+            to { opacity: 1; transform: translateX(-50%); }
+        }
+
+        .message {
+            font-family: 'Georgia', serif;
+            color: #e0f2fe;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 10px rgba(100, 255, 218, 0.5),
+                0 0 20px rgba(100, 255, 218, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            animation: text-glow 3s infinite ease-in-out;
+        }
+
+        @keyframes text-glow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px rgba(100, 255, 218, 0.5),
+                    0 0 20px rgba(100, 255, 218, 0.3),
+                    2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px rgba(100, 255, 218, 0.8),
+                    0 0 40px rgba(100, 255, 218, 0.5),
+                    2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Georgia', serif;
+            color: #bae6fd;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(100, 200, 255, 0.2));
+            border: 2px solid rgba(100, 255, 218, 0.6);
+            border-radius: 50px;
+            color: #e0f2fe;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(100, 255, 218, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-button:before {
+            content: '←';
+            margin-right: 10px;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.3), rgba(100, 200, 255, 0.3));
+            border-color: rgba(100, 255, 218, 1);
+            box-shadow: 
+                0 0 30px rgba(100, 255, 218, 0.8),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .back-button:hover:before {
+            transform: translateX(-5px);
+        }
+
+        .back-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="nebula nebula1"></div>
+    <div class="nebula nebula2"></div>
+    <div class="nebula nebula3"></div>
+
+    <div class="message-container">
+        <h1 class="message">Epero te gusten</h1>
+        <p class="subtitle">Donde la naturaleza se encuentra con el cosmos</p>
+        <button class="back-button" onclick="window.history.back()">Volver</button>
+    </div>
+
+    <div class="garden">
+        <!-- Pasto -->
+        <div id="grass"></div>
+
+        <!-- Flor izquierda -->
+        <div class="flower" style="animation-delay: 0.2s;">
+            <div class="bloom" style="width: 70px; height: 70px;">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 180px;">
+                <div class="leaf leaf-left" style="top: 60px;"></div>
+                <div class="leaf leaf-right" style="top: 100px;"></div>
+            </div>
+        </div>
+
+        <!-- Flor central (más alta) -->
+        <div class="flower">
+            <div class="bloom">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 250px;">
+                <div class="bud-cluster" style="top: 40px; left: -25px;">
+                    <div class="bud" style="animation-delay: 0s;"></div>
+                    <div class="bud" style="animation-delay: 0.3s;"></div>
+                    <div class="bud" style="animation-delay: 0.6s;"></div>
+                </div>
+                <div class="leaf leaf-left" style="top: 80px;"></div>
+                <div class="leaf leaf-right" style="top: 130px;"></div>
+                <div class="leaf leaf-left" style="top: 180px;"></div>
+            </div>
+        </div>
+
+        <!-- Flor derecha -->
+        <div class="flower" style="animation-delay: 0.4s;">
+            <div class="bloom" style="width: 75px; height: 75px;">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 200px;">
+                <div class="leaf leaf-left" style="top: 70px;"></div>
+                <div class="leaf leaf-right" style="top: 120px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generar estrellas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Generar pasto
+        const garden = document.querySelector('.garden');
+        for (let i = 0; i < 50; i++) {
+            const blade = document.createElement('div');
+            blade.className = 'grass-blade';
+            const height = Math.random() * 60 + 40;
+            blade.style.height = height + 'px';
+            blade.style.left = (Math.random() * 100) + '%';
+            blade.style.animationDelay = Math.random() * 3 + 's';
+            blade.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            garden.appendChild(blade);
+        }
+    </script>
+</body>
+</html>
