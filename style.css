@@ -8,8 +8,8 @@ body {
     /*background: linear-gradient(135deg, #fce38a, #f38181);  Fondo degradado */
     background: url('images/galaxia1.0.jpg') no-repeat center center fixed; /* Carga la imagen */
     background-size: cover;
-    color: #f0f0f0;
-    overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+    color: #0b45a2;
+    /*overflow: hidden;*/ /* Evita barras de desplazamiento innecesarias */
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
 }
 
 .card {
-    background: rgba(195, 227, 255, 0.9); /* Fondo blanco semi-transparente */
+    background: rgba(145, 204, 255, 0.9); /* Fondo blanco semi-transparente */
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
@@ -30,7 +30,7 @@ body {
 .title {
     font-family: 'Pacifico', cursive; /* Fuente especial para el título */
     font-size: 3.5em; /* Tamaño grande */
-    color: #0091eb; /* Color rosa vibrante */
+    color: #0084d6; /* Color vibrante */
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra en el texto */
     animation: bounceIn 2s ease-out; /* Animación de rebote */
@@ -39,20 +39,20 @@ body {
 .message {
     font-size: 1.2em;
     line-height: 1.6;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: #555;
 }
 
 .gift-box {
     font-size: 3em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     animation: pulse 2s infinite ease-in-out; /* Animación de pulsación */
 }
 
 .signature {
     font-size: 1.1em;
     font-style: italic;
-    color: #777;
+    color: #555;
     margin-top: 30px;
 }
 
@@ -137,7 +137,7 @@ body {
 .gallery-card .gallery-title {
     font-family: 'Pacifico', cursive;
     font-size: 2.8em; /* Un poco más pequeño que el principal */
-    color: #0091eb; /* Un color que contraste con el fondo de la galería */
+    color: #0084d6; /* Un color que contraste con el fondo de la galería */
     margin-bottom: 30px;
 }
 
@@ -146,13 +146,14 @@ body {
     color: #333; /* Color oscuro para que se lea en el fondo blanco de la tarjeta */
 }
 .gallery-card .back-button {
-    background-color: #0091eb;
+    background-color: #3799f5;
     color: white;
 }
 .gallery-card .back-button:hover {
-    background-color: #0091eb;
+    background-color: #ff88f9;
 }
 
+/* Media Queries para la galería */
 /* Media Queries para la galería */
 @media (max-width: 850px) {
     .gallery-card {
@@ -163,11 +164,13 @@ body {
         font-size: 2em;
     }
     .image-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
+        /* CAMBIO CLAVE: Reducimos el minmax a 100px para que quepan más columnas */
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px; /* Reducimos el espacio entre fotos */
     }
     .image-grid img {
-        height: 120px;
+        /* Ajustamos la altura para que las fotos sean más pequeñas */
+        height: 100px; 
     }
     .back-button {
         padding: 10px 20px;

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores</title>
+    <title>¡Sorpresa!</title>
+    <link rel="icon" type="images/png" href= "ICON/pixel_heart.png">
     <style>
         * {
             margin: 0;
@@ -328,6 +329,7 @@
     </style>
 </head>
 <body>
+
     <div class="stars" id="stars"></div>
     
     <div class="nebula nebula1"></div>
@@ -335,14 +337,32 @@
     <div class="nebula nebula3"></div>
 
     <div class="message-container">
-        <h1 class="message">Epero te gusten</h1>
-        <p class="subtitle">Donde la naturaleza se encuentra con el cosmos</p>
-        <button class="back-button" onclick="window.history.back()">Volver</button>
+        <h1 class="message">Para mi persona favorita</h1>
+        <p class="subtitle">""Hay personas que simplemente existen, y luego estás tú, que brillas. Desde que 
+            llegaste, mi universo tiene un color más intenso y una melodía más clara. Te deseo un 
+            cumpleaños tan mágico y especial como la energía que irradias. Que sigas siendo esa luz
+            que me guía y me hace sentir que la vida vale la pena. Te quiero muchísimo. ¡Feliz día!""</p>
+        <a href="galeria.html" class="back-button">Volver</a>
     </div>
 
     <div class="garden">
         <!-- Pasto -->
         <div id="grass"></div>
+
+        <!-- Flor izquierda pequeña -->
+        <div class="flower" style="animation-delay: 0.1s;">
+            <div class="bloom" style="width: 60px; height: 60px;">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 150px;">
+                <div class="leaf leaf-left" style="top: 50px;"></div>
+            </div>
+        </div>
 
         <!-- Flor izquierda -->
         <div class="flower" style="animation-delay: 0.2s;">
@@ -357,6 +377,22 @@
             <div class="stem" style="height: 180px;">
                 <div class="leaf leaf-left" style="top: 60px;"></div>
                 <div class="leaf leaf-right" style="top: 100px;"></div>
+            </div>
+        </div>
+
+        <!-- Flor izquierda-centro -->
+        <div class="flower" style="animation-delay: 0.3s;">
+            <div class="bloom" style="width: 65px; height: 65px;">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 190px;">
+                <div class="leaf leaf-left" style="top: 70px;"></div>
+                <div class="leaf leaf-right" style="top: 120px;"></div>
             </div>
         </div>
 
@@ -382,6 +418,22 @@
             </div>
         </div>
 
+        <!-- Flor derecha-centro -->
+        <div class="flower" style="animation-delay: 0.5s;">
+            <div class="bloom" style="width: 68px; height: 68px;">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 195px;">
+                <div class="leaf leaf-left" style="top: 75px;"></div>
+                <div class="leaf leaf-right" style="top: 115px;"></div>
+            </div>
+        </div>
+
         <!-- Flor derecha -->
         <div class="flower" style="animation-delay: 0.4s;">
             <div class="bloom" style="width: 75px; height: 75px;">
@@ -395,6 +447,21 @@
             <div class="stem" style="height: 200px;">
                 <div class="leaf leaf-left" style="top: 70px;"></div>
                 <div class="leaf leaf-right" style="top: 120px;"></div>
+            </div>
+        </div>
+
+        <!-- Flor derecha pequeña -->
+        <div class="flower" style="animation-delay: 0.6s;">
+            <div class="bloom" style="width: 62px; height: 62px;">
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(0deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(72deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(144deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(216deg);"></div>
+                <div class="petal" style="transform: translate(-50%, -100%) rotate(288deg);"></div>
+                <div class="center"></div>
+            </div>
+            <div class="stem" style="height: 160px;">
+                <div class="leaf leaf-right" style="top: 60px;"></div>
             </div>
         </div>
     </div>
