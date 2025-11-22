@@ -13,16 +13,19 @@
         }
 
         body {
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             background: linear-gradient(to bottom, #0a1128 0%, #1a2344 50%, #0d1b3a 100%);
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         .stars {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
+            pointer-events: none;
         }
 
         .star {
@@ -38,11 +41,12 @@
         }
 
         .nebula {
-            position: absolute;
+            position: fixed;
             border-radius: 50%;
             filter: blur(60px);
             opacity: 0.4;
             animation: nebula-float 8s infinite ease-in-out;
+            pointer-events: none;
         }
 
         @keyframes nebula-float {
@@ -83,11 +87,12 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 800px;
-            height: 70%;
+            height: 60%;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: 40px;
+            gap: clamp(8px, 3vw, 40px);
+            padding: 0 10px;
         }
 
         .grass-blade {
@@ -111,11 +116,12 @@
             flex-direction: column;
             align-items: center;
             animation: grow 2s ease-out;
+            transform: scale(var(--flower-scale, 1));
         }
 
         @keyframes grow {
             from { transform: translateY(100px) scale(0); opacity: 0; }
-            to { transform: translateY(0) scale(1); opacity: 1; }
+            to { transform: translateY(0) scale(var(--flower-scale, 1)); opacity: 1; }
         }
 
         .stem {
@@ -229,24 +235,24 @@
         }
 
         .message-container {
-            position: absolute;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            padding: 20px 15px;
+            padding-top: clamp(30px, 8vh, 80px);
             text-align: center;
             z-index: 100;
             animation: fade-in 2s ease-out;
+            margin-bottom: 20px;
         }
 
         @keyframes fade-in {
-            from { opacity: 0; transform: translate(-50%, -30px); }
-            to { opacity: 1; transform: translateX(-50%); }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .message {
             font-family: 'Georgia', serif;
             color: #e0f2fe;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 300;
             margin-bottom: 15px;
             text-shadow: 
@@ -275,22 +281,27 @@
         .subtitle {
             font-family: 'Georgia', serif;
             color: #bae6fd;
-            font-size: 1.2rem;
+            font-size: clamp(0.85rem, 2.5vw, 1.2rem);
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            padding: 0 10px;
         }
 
         .back-button {
             display: inline-block;
-            padding: 15px 40px;
+            padding: clamp(10px, 2vw, 15px) clamp(25px, 5vw, 40px);
             background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(100, 200, 255, 0.2));
             border: 2px solid rgba(100, 255, 218, 0.6);
             border-radius: 50px;
             color: #e0f2fe;
             font-family: 'Arial', sans-serif;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -323,8 +334,64 @@
             transform: translateX(-5px);
         }
 
-        .back-button:active {
-            transform: translateY(0);
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nebula {
+                filter: blur(40px);
+                opacity: 0.3;
+            }
+            .nebula1 { width: 120px; height: 120px; }
+            .nebula2 { width: 100px; height: 100px; }
+            .nebula3 { width: 100px; height: 100px; }
+            
+            .garden {
+                height: 50%;
+            }
+            
+            .flower {
+                --flower-scale: 0.7;
+            }
+            
+            .leaf {
+                width: 22px;
+                height: 11px;
+            }
+            .leaf-left { left: -22px; }
+            .leaf-right { right: -18px; }
+        }
+
+        @media (max-width: 480px) {
+            .flower {
+                --flower-scale: 0.55;
+            }
+            
+            .garden {
+                gap: 5px;
+                height: 45%;
+            }
+            
+            .leaf {
+                width: 18px;
+                height: 9px;
+            }
+            .leaf-left { left: -18px; }
+            .leaf-right { right: -14px; }
+            
+            .bud-cluster {
+                transform: scale(0.7);
+            }
+        }
+
+        @media (max-height: 700px) {
+            .message-container {
+                padding-top: 15px;
+            }
+            .garden {
+                height: 40%;
+            }
+            .flower {
+                --flower-scale: 0.5;
+            }
         }
     </style>
 </head>
@@ -338,10 +405,10 @@
 
     <div class="message-container">
         <h1 class="message">Para mi persona favorita</h1>
-        <p class="subtitle">""Hay personas que simplemente existen, y luego estás tú, que brillas. Desde que 
+        <p class="subtitle">"Hay personas que simplemente existen, y luego estás tú, que brillas. Desde que 
             llegaste, mi universo tiene un color más intenso y una melodía más clara. Te deseo un 
             cumpleaños tan mágico y especial como la energía que irradias. Que sigas siendo esa luz
-            que me guía y me hace sentir que la vida vale la pena. Te quiero muchísimo. ¡Feliz día!""</p>
+            que me guía y me hace sentir que la vida vale la pena. Te quiero muchísimo. ¡Feliz día!"</p>
         <a href="galeria.html" class="back-button">Volver</a>
     </div>
 
@@ -469,7 +536,7 @@
     <script>
         // Generar estrellas
         const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 150; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             const size = Math.random() * 3 + 1;
@@ -484,10 +551,10 @@
 
         // Generar pasto
         const garden = document.querySelector('.garden');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 40; i++) {
             const blade = document.createElement('div');
             blade.className = 'grass-blade';
-            const height = Math.random() * 60 + 40;
+            const height = Math.random() * 50 + 30;
             blade.style.height = height + 'px';
             blade.style.left = (Math.random() * 100) + '%';
             blade.style.animationDelay = Math.random() * 3 + 's';
